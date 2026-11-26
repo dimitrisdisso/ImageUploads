@@ -1,7 +1,0 @@
-# Security headers for static files (scripts, styles, images, favicon) served by Cloudflare.
-/*
-  Strict-Transport-Security: max-age=63072000; includeSubDomains
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-  Cross-Origin-Resource-Policy: same-origin

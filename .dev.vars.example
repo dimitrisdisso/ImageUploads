@@ -1,0 +1,7 @@
+# Local development secrets for `npm run dev`. Copy to .dev.vars (which is git-ignored).
+SESSION_SECRET=change-me-to-a-long-random-string-at-least-32-chars
+EMAIL_API_KEY=
+GOOGLE_CLIENT_SECRET=
+# Override wrangler.jsonc vars locally if needed:
+# ADMIN_EMAILS=you@example.com
+# GOOGLE_CLIENT_ID=

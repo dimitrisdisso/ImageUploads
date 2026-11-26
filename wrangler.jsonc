@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "epitropi",
+  "main": "src/server.ts",
+  "compatibility_date": "2026-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  // No public preview URLs for each upload. After your own domain works, you can also set
+  // "workers_dev": false so the site is only reachable on that domain.
+  "preview_urls": false,
+
+  // Database: create with `npx wrangler d1 create epitropi` and paste the id it prints below.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "epitropi",
+      "database_id": "PASTE-D1-DATABASE-ID-HERE",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // Images and reader photos: create with `npx wrangler r2 bucket create epitropi-media`.
+  // The bucket stays private; the site serves images itself after checking permissions.
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "epitropi-media" }],
+
+  // Non-secret settings. Secrets (SESSION_SECRET, EMAIL_API_KEY, GOOGLE_CLIENT_SECRET, GITHUB_TOKEN)
+  // are added with `npx wrangler secret put NAME`, never written here.
+  "vars": {
+    // Your site's address. Used for links in emails and for Google sign-in.
+    "APP_URL": "https://YOUR-DOMAIN.gr",
+    "EMAIL_PROVIDER": "resend",
+    "EMAIL_FROM": "Επιτροπή Άνω Πόλης <no-reply@YOUR-DOMAIN.gr>",
+    "ADMIN_EMAILS": "you@YOUR-DOMAIN.gr",
+    "GOOGLE_CLIENT_ID": "",
+    // Branch that receives uploaded media in the GitHub media repository.
+    "GITHUB_MEDIA_BRANCH": "main"
+  }
+}
